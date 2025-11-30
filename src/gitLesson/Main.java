@@ -36,6 +36,22 @@ public class Main {
             System.out.println(animal);
         }
 
+        MVC pattern - Model View Controller - Model отвечает за данные приложения, взаимодействует с базой данных и бизнес-логикой, View отображает эти данные в виде таблицы, Controller управляет запросами от клиента
+
+        @Controller
+        public class MainController - показываем джаве что создаем контроллер
+
+            @GetMapping("/mvc/demo-application")
+            public String indexPage() {
+                return "index"; - html file
+            }
+
+            @GetMapping("/mvc/say-hello")
+            public String greetingsPage(@RequestParam String name,
+                    Model model) {
+                model.addAttribute("name", name);
+                return "greetings"; - html file
+            }
          */
     }
 }
