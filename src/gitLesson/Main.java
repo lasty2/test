@@ -52,6 +52,39 @@ public class Main {
                 model.addAttribute("name", name);
                 return "greetings"; - html file
             }
+
+
+            REST - REpresentational State Transfer - позволяет наилучшим образом использовать протокол http(hyper text transfer protocol)
+            API - Application public interface - интерфейс, позволяющий пользователю получить доступ к функционалу программы
+            API должен выполнять 4 вида функции: создание, чтение, обновление, удаление данных. (Create, read, update, delete - CRUD) - необходим при создании веб приложение
+            структурирует модели, которые создаются для API, традиционно распространено применение оперирования к BD.
+            CRUD соответствует этим HTTP методам - POST(Create), GET(Read), PUT(Update), DELETE(Delete)
+
+
+            http://localhost:8080/users/15 - 15 - это path variable. Path Variable - это данные, которые являются частью самого URL-адреса. Они не отделяются знаками ? или &, а встроены в структуру пути.
+            @GetMapping("/users/{userId}") - определяем переменную
+            public String getUserById(@PathVariable Long userId) { - извлекаем переменную
+                return "User ID: " + userId;
+            }
+            Используется, если элемент является уникальным идентификатором или URL сам по себе определяет ресурс
+
+            http://localhost:8080/search?query=java&page=2&size=10 - query=java, page=2 и size=10 - это Query Parameters. Query parameter - это пары "ключ-значение", которые добавляются в конец URL после знака вопроса ?. Они используются для фильтрации, сортировки, пагинации и других необязательных параметров.
+            @GetMapping("/search")
+            public String search(@RequestParam String query,
+                         @RequestParam int page) { - задаем параметры
+                 return "Searching for: '" + query + "', on page: " + page; - возвращаем их на страницу.
+            }
+            Используется для необязательных параметров или для параметров, не являющихся частью идентификатора ресурса
+
+            {"pizza": "Margherita", "size": "large"} - запрос - RequestBody. RequestBody - это данные, которые клиент отправляет в теле HTTP-запроса (обычно в формате JSON или XML). Используется для создания или обновления сложных объектов (например, целого пользователя с именем, email, паролем и т.д.).
+            @PostMapping("/users") - Метод POST, так как мы создаем новый ресурс
+            public String createUser(@RequestBody User newUser) { - Spring берет тело запроса (JSON) и превращает его в объект User
+                return "User created: " + newUser.getName() + ", " + newUser.getEmail();
+            }
+
+            ResponseBody - Это то, что ваш контроллер возвращает клиенту (обычно в формате JSON). Указывает, что возвращаемое значение метода должно быть записано непосредственно в тело HTTP-ответа (а не интерпретироваться как имя View для рендеринга HTML).
+            В современных Spring Boot приложениях с @RestController вам почти никогда не нужно писать @ResponseBody явно. Аннотация @RestController сама по себе является комбинацией @Controller и @ResponseBody.
+            @RestController = @Controller + @ResponseBody для ВСЕХ методов
          */
     }
 }
