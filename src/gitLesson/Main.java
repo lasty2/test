@@ -19,7 +19,23 @@ public class Main {
         public @interface (name){
 
         }
-        Generics -
+        Generics - позволяют параметризировать какие то классы(например List) и с помощью этого задать рамки, обходя даункастинг
+
+        List<Animal> listOfAnimals = new ArrayList<>();
+        listOfAnimals.add(new Animal(1);
+        listOfAnimals.add(new Animal(2);
+
+        List<Dog> listOfDogs = new ArrayList<>();
+        listOfDogs.add(new Dog();
+        listOfDogs.add(new Dog();
+
+        test(listOfAnimals);
+        test(listOfDogs);
+        private static void test(List<? extends Animal> list) { - Wildcard - позволяет дать понять джаве, что мы можем подать на вход в лист не только объекты класса Animal, но и его наследников. super Animal - позволяет дать понять джаве, что мы подаем на вход объект класса выше по иерархии наследования
+        for(Animal animal : list)
+            System.out.println(animal);
+        }
+
          */
     }
 }
