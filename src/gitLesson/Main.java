@@ -19,7 +19,7 @@ public class Main {
         public @interface (name){
 
         }
-        Generics - позволяют параметризировать какие то классы(например List) и с помощью этого задать рамки, обходя даункастинг
+        Generics - позволяют параметризировать какие-то классы(например List) и с помощью этого задать рамки, обходя даункастинг
 
         List<Animal> listOfAnimals = new ArrayList<>();
         listOfAnimals.add(new Animal(1);
@@ -54,6 +54,21 @@ public class Main {
             }
 
 
+            JSON - JavaScriptObjectNotation - это простой текстовый формат для обмена данными на всех языках программирования.
+
+            DTO - Data Transfer Object - упрощает работу с данными и делает ее быстрее и безопаснее.
+            Позволяет избежать утечки данных и ускорить производительность, соблюдает принцип соблюдения слоев
+
+            Валидация — это процесс проверки данных на соответствие определенным правилам
+            javax.validation - это спецификация (API) для валидации объектов. Фактическая реализация — Hibernate Validator (самая популярная).
+            @Valid — запуск валидации. Аннотация, которая запускает процесс валидации. Ставится перед объектом, который нужно проверить. (Без @Valid аннотации валидации (вроде @NotNull) не будут работать!)
+            Основные аннотации: @NotNull — проверка на null, @NotEmpty — не null и не пусто, @NotBlank — строка без пробелов(если есть, обрежет), @Size — ограничение размера, @Email — проверка email
+            @Min / @Max — числовые диапазоны, @Pattern — регулярные выражения
+
+            JDBC - java database connectivity - драйвер для подключения к базам данных, использует одинаковые методы для всех баз данных
+            ORM - object relational mapping - то, на чем завязан hibernate - дает возможность прямо в коде с помощью аннотации или доп конфиг файла создать соотношения поля джавы с таблицей в базе данных
+            JPA - java persistence architecture - стандарт orm
+
             REST - REpresentational State Transfer - позволяет наилучшим образом использовать протокол http(hyper text transfer protocol)
             API - Application public interface - интерфейс, позволяющий пользователю получить доступ к функционалу программы
             API должен выполнять 4 вида функции: создание, чтение, обновление, удаление данных. (Create, read, update, delete - CRUD) - необходим при создании веб приложение
@@ -85,6 +100,13 @@ public class Main {
             ResponseBody - Это то, что ваш контроллер возвращает клиенту (обычно в формате JSON). Указывает, что возвращаемое значение метода должно быть записано непосредственно в тело HTTP-ответа (а не интерпретироваться как имя View для рендеринга HTML).
             В современных Spring Boot приложениях с @RestController вам почти никогда не нужно писать @ResponseBody явно. Аннотация @RestController сама по себе является комбинацией @Controller и @ResponseBody.
             @RestController = @Controller + @ResponseBody для ВСЕХ методов
+
+            Аннотация @SpringBootApplication - это композитная аннотация, которая объединяет три основные аннотации:
+            @SpringBootApplication = @SpringBootConfiguration + @EnableAutoConfiguration + @ComponentScan
+            @SpringBootConfiguration - Указывает, что класс содержит конфигурацию Spring, является специализированной версией @Configuration, помечает класс как источник определений бинов
+            @EnableAutoConfiguration - Самый важный компонент Spring Boot: включает автоматическую настройку приложения, анализирует classpath и добавляет необходимые бины
+            Примеры автоматической настройки: если в classpath есть H2, настраивает embedded БД, если есть Spring MVC, настраивает DispatcherServlet если есть JPA, настраивает EntityManager
+            @ComponentScan - сканирует пакеты на наличие компонентов Spring. По умолчанию сканирует текущий пакет и все подпакеты. Обнаруживает: @Component, @Service, @Repository, @Controller, @Configuration классы
          */
     }
 }

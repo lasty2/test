@@ -1,4 +1,4 @@
-//API - Application public interface - интерфейс, позволяющий пользователю получить доступ к функционалу программы
+
 
 package obuchenie;
 
